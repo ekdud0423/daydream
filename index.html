@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>백일몽</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Pretendard', sans-serif;
+      background: #111;
+      color: #f5f5f5;
+      line-height: 1.6;
+    }
+
+    section {
+      padding: 100px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h1, h2 {
+      font-weight: 600;
+    }
+
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      opacity: 0.7;
+    }
+
+    .btn {
+      margin-top: 20px;
+      display: inline-block;
+      padding: 12px 20px;
+      border: 1px solid #fff;
+      text-decoration: none;
+      color: #fff;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #fff;
+      color: #111;
+    }
+
+    .card {
+      border: 1px solid #333;
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    .crew {
+      opacity: 0.8;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HOME -->
+  <section class="hero">
+    <h1>사라지는 순간을 붙잡는 방법</h1>
+    <p>관객으로 시작해 창작자로 끝나는 경험</p>
+    <a href="#workshop" class="btn">워크숍 함께하기</a>
+  </section>
+
+  <!-- 공연 -->
+  <section>
+    <h2>공연</h2>
+    <p>우리는 결과보다 과정을 사랑합니다.</p>
+
+    <div class="card">
+      <h3>오늘은 아무 일도 없었다</h3>
+      <p>말하지 못한 하루가 무대에서 흘러나옵니다</p>
+    </div>
+  </section>
+
+  <!-- 워크숍 -->
+  <section id="workshop">
+    <h2>워크숍</h2>
+    <p>배우가 아니어도 괜찮습니다. 대부분 처음이었습니다.</p>
+
+    <div class="card">
+      <h3>공연 제작 워크숍</h3>
+      <p>2주 동안 한 편의 공연을 함께 만듭니다</p>
+      <a href="https://forms.gle/여기에링크" target="_blank" class="btn">함께하기</a>
+    </div>
+
+    <div class="card">
+      <h3>희곡 제작 공모</h3>
+      <p>당신의 이야기를 무대 위로 올립니다</p>
+      <a href="https://forms.gle/여기에링크" target="_blank" class="btn">글 제출</a>
+    </div>
+
+    <div class="card">
+      <h3>연기 훈련 모임</h3>
+      <p>솔직한 감정을 연습하는 시간</p>
+      <a href="https://forms.gle/여기에링크" target="_blank" class="btn">참여하기</a>
+    </div>
+  </section>
+
+  <!-- 크루 -->
+  <section>
+    <h2>배우 · 연출</h2>
+    <p>우리는 역할로 모였지만 사람으로 남았습니다</p>
+
+    <div class="crew">
+      <strong>연출</strong><br>
+      사람을 오래 관찰하는 편입니다. 그래서 공연이 느립니다.
+    </div>
+
+    <div class="crew">
+      <strong>배우</strong><br>
+      말이 느려서 연기를 시작했습니다.
+    </div>
+  </section>
+
+</body>
+</html>
