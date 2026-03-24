@@ -1,132 +1,179 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <title>백일몽</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Pretendard', sans-serif;
-      background: #111;
-      color: #f5f5f5;
-      line-height: 1.6;
-    }
+<title>극단 페이지</title>
 
-    section {
-      padding: 100px 20px;
-      max-width: 900px;
-      margin: auto;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: #f5f5f5;
+}
 
-    h1, h2 {
-      font-weight: 600;
-    }
+/* 네비게이션 */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  background: white;
+  border-bottom: 1px solid #ddd;
+}
 
-    .hero {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
+.logo {
+  font-weight: bold;
+}
 
-    .hero h1 {
-      font-size: 42px;
-      margin-bottom: 10px;
-    }
+.menu {
+  font-size: 14px;
+}
 
-    .hero p {
-      opacity: 0.7;
-    }
+/* 상단 민트 배너 */
+.top-banner {
+  background: #7edbd2;
+  text-align: center;
+  padding: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
 
-    .btn {
-      margin-top: 20px;
-      display: inline-block;
-      padding: 12px 20px;
-      border: 1px solid #fff;
-      text-decoration: none;
-      color: #fff;
-      transition: 0.3s;
-    }
+/* 컨테이너 */
+.container {
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 20px;
+}
 
-    .btn:hover {
-      background: #fff;
-      color: #111;
-    }
+/* 공통 박스 */
+.box {
+  background: #ccc;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-weight: bold;
+}
 
-    .card {
-      border: 1px solid #333;
-      padding: 20px;
-      margin-top: 20px;
-    }
+/* 히어로 */
+.hero {
+  height: 180px;
+  font-size: 20px;
+}
 
-    .crew {
-      opacity: 0.8;
-      margin-top: 10px;
-    }
-  </style>
+/* 로고 영역 */
+.logo-box {
+  height: 120px;
+  color: white;
+}
+
+/* 연혁 */
+.history {
+  height: 220px;
+}
+
+/* 가로 버튼 */
+.wide-btn {
+  height: 60px;
+  background: #222;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.wide-btn:hover {
+  background: #444;
+}
+
+/* 공연 그리드 */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.grid div {
+  background: #ccc;
+  height: 100px;
+}
+
+.section-title {
+  text-align: center;
+  margin: 20px 0 10px;
+  font-weight: bold;
+}
+
+/* 푸터 */
+footer {
+  font-size: 12px;
+  text-align: center;
+  margin-top: 30px;
+}
+
+</style>
 </head>
 
 <body>
 
-  <!-- HOME -->
-  <section class="hero">
-    <h1>사라지는 순간을 붙잡는 방법</h1>
-    <p>관객으로 시작해 창작자로 끝나는 경험</p>
-    <a href="#workshop" class="btn">워크숍 함께하기</a>
-  </section>
+<!-- 네비 -->
+<div class="nav">
+  <div class="logo">극단 신세계</div>
+  <div class="menu">메뉴</div>
+</div>
+
+<!-- 민트 배너 -->
+<div class="top-banner" onclick="location.href='#'">
+  📌 극단 신세계 관람권 기부하러 가기
+</div>
+
+<div class="container">
+
+  <!-- 히어로 -->
+  <div class="box hero">
+    가장 최근 사진 혹은 이벤트
+  </div>
+
+  <!-- 로고 -->
+  <div class="box logo-box">
+    로고
+  </div>
+
+  <!-- 연혁 -->
+  <div class="box history">
+    연혁
+  </div>
+
+  <!-- 버튼 -->
+  <div class="box wide-btn" onclick="location.href='#'">
+    디딤프로젝트 보러가기
+  </div>
+
+  <div class="box wide-btn" onclick="location.href='#'">
+    워크숍 신청하기
+  </div>
 
   <!-- 공연 -->
-  <section>
-    <h2>공연</h2>
-    <p>우리는 결과보다 과정을 사랑합니다.</p>
+  <div class="section-title">공연별 사진</div>
 
-    <div class="card">
-      <h3>오늘은 아무 일도 없었다</h3>
-      <p>말하지 못한 하루가 무대에서 흘러나옵니다</p>
-    </div>
-  </section>
+  <div class="grid">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
 
-  <!-- 워크숍 -->
-  <section id="workshop">
-    <h2>워크숍</h2>
-    <p>배우가 아니어도 괜찮습니다. 대부분 처음이었습니다.</p>
+  <footer>
+    단체명 : 극단 신세계 <br>
+    이메일 : example@gmail.com <br>
+    ©2026 극단 신세계
+  </footer>
 
-    <div class="card">
-      <h3>공연 제작 워크숍</h3>
-      <p>2주 동안 한 편의 공연을 함께 만듭니다</p>
-      <a href="https://forms.gle/여기에링크" target="_blank" class="btn">함께하기</a>
-    </div>
-
-    <div class="card">
-      <h3>희곡 제작 공모</h3>
-      <p>당신의 이야기를 무대 위로 올립니다</p>
-      <a href="https://forms.gle/여기에링크" target="_blank" class="btn">글 제출</a>
-    </div>
-
-    <div class="card">
-      <h3>연기 훈련 모임</h3>
-      <p>솔직한 감정을 연습하는 시간</p>
-      <a href="https://forms.gle/여기에링크" target="_blank" class="btn">참여하기</a>
-    </div>
-  </section>
-
-  <!-- 크루 -->
-  <section>
-    <h2>배우 · 연출</h2>
-    <p>우리는 역할로 모였지만 사람으로 남았습니다</p>
-
-    <div class="crew">
-      <strong>연출</strong><br>
-      사람을 오래 관찰하는 편입니다. 그래서 공연이 느립니다.
-    </div>
-
-    <div class="crew">
-      <strong>배우</strong><br>
-      말이 느려서 연기를 시작했습니다.
-    </div>
-  </section>
+</div>
 
 </body>
 </html>
