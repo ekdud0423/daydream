@@ -3,9 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>극단 백일몽 홈페이지</title>
-
+<title>극단 페이지</title>
 <style>
 body {
   margin: 0;
@@ -18,33 +16,42 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 15px;
+  padding: 15px 5%; /* PC에서도 여백이 자연스럽도록 % 사용 */
   background: white;
   border-bottom: 1px solid #ddd;
 }
 
-.logo {
-  font-weight: bold;
-}
+.logo { font-weight: bold; font-size: 1.2rem; }
+.menu { font-size: 14px; }
 
-.menu {
-  font-size: 14px;
-}
-
-/* 상단 민트 배너 */
+/* 상단 배너 */
 .top-banner {
   background: #C4B4C7;
   text-align: center;
-  padding: 8px;
+  padding: 10px;
   font-size: 14px;
   cursor: pointer;
 }
 
-/* 컨테이너 */
+/* 컨테이너 - 핵심 수정 부분 */
 .container {
-  max-width: 420px;
+  width: 90%; /* 기본적으로 가득 차게 */
+  max-width: 500px; /* 모바일에서는 좁게 */
   margin: 0 auto;
-  padding: 20px;
+  padding: 20px 0;
+}
+
+/* PC 버전일 때 (화면 너비가 768px 이상일 때) */
+@media (min-width: 768px) {
+  .container {
+    max-width: 1000px; /* PC에서는 최대 1000px까지 넓어짐 */
+  }
+  .hero {
+    height: 500px !important; /* PC에서는 히어로 이미지를 더 크게 */
+  }
+  .grid {
+    grid-template-columns: repeat(4, 1fr) !important; /* PC에서는 사진을 4개씩 나열 */
+  }
 }
 
 /* 공통 박스 */
@@ -58,13 +65,13 @@ body {
   font-weight: bold;
 }
 
-/* 히어로 */
+/* 히어로 이미지 영역 */
 .hero {
   position: relative;
   width: 100%;
-  max-width: 500px;
-  height: 300px;
+  height: 300px; /* 모바일 높이 */
   overflow: hidden;
+  margin-bottom: 20px;
 }
 
 .hero img {
@@ -89,117 +96,78 @@ body {
   48% { opacity: 0; }
   100% { opacity: 0; }
 }
+
 /* 로고 영역 */
-.logo-box {
-  height: 120px;
-  color: white;
-}
+.logo-box { height: 120px; color: white; }
 
 /* 연혁 */
-.history {
-  height: 220px;
-}
+.history { height: 220px; }
 
-/* 가로 버튼 */
+/* 버튼 */
 .wide-btn {
   height: 60px;
   background: #5B4A54;
   color: white;
   border-radius: 8px;
   cursor: pointer;
+  transition: 0.3s;
 }
-
-.wide-btn:hover {
-  background: #444;
-}
+.wide-btn:hover { background: #444; }
 
 /* 공연 그리드 */
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr); /* 모바일 3열 */
   gap: 10px;
 }
-
-.grid div {
-  background: #ccc;
-  height: 100px;
-}
+.grid div { background: #ccc; height: 150px; }
 
 .section-title {
   text-align: center;
-  margin: 20px 0 10px;
+  margin: 30px 0 15px;
   font-weight: bold;
+  font-size: 1.1rem;
 }
 
-/* 푸터 */
 footer {
   font-size: 12px;
   text-align: center;
-  margin-top: 30px;
+  margin-top: 50px;
+  padding-bottom: 30px;
+  color: #666;
 }
-
 </style>
 </head>
-
 <body>
 
-<!-- 네비 -->
 <div class="nav">
   <div class="logo">극단 백일몽</div>
   <div class="menu">메뉴</div>
 </div>
 
-<!-- 민트 배너 -->
 <div class="top-banner" onclick="location.href='#'">
   📌 극단 백일몽 후원하러 가기
 </div>
 
 <div class="container">
-
-  <!-- 히어로 -->
   <div class="hero">
-<div class="hero">
-  <img src="https://raw.githubusercontent.com/ekdud0423/daydream/6b87f1cbdd3c5163d065355c7249e06e2407ce26/KakaoTalk_20260318_222256249_01.jpg">
-
-  <img src="https://raw.githubusercontent.com/ekdud0423/daydream/6b87f1cbdd3c5163d065355c7249e06e2407ce26/KakaoTalk_20260318_222256249_02.jpg">
-
-  <img src="https://raw.githubusercontent.com/ekdud0423/daydream/6b87f1cbdd3c5163d065355c7249e06e2407ce26/KakaoTalk_20260318_222431455.jpg">
-
-  <img src="https://raw.githubusercontent.com/ekdud0423/daydream/6b87f1cbdd3c5163d065355c7249e06e2407ce26/KakaoTalk_20260318_222431455.jpg">
-
-  <img src="https://raw.githubusercontent.com/ekdud0423/daydream/6b87f1cbdd3c5163d065355c7249e06e2407ce26/KakaoTalk_20260318_222431455.jpg">
-</div>
-</div>
-
-  <!-- 로고 -->
-  <div class="box logo-box">
-    로고
+    <img src="https://raw.githubusercontent.com/ekdud0423/daydream/6b87f1cbdd3c5163d065355c7249e06e2407ce26/KakaoTalk_20260318_222256249_01.jpg">
+    <img src="https://raw.githubusercontent.com/ekdud0423/daydream/6b87f1cbdd3c5163d065355c7249e06e2407ce26/KakaoTalk_20260318_222256249_02.jpg">
+    <img src="https://raw.githubusercontent.com/ekdud0423/daydream/6b87f1cbdd3c5163d065355c7249e06e2407ce26/KakaoTalk_20260318_222431455.jpg">
+    <img src="https://raw.githubusercontent.com/ekdud0423/daydream/6b87f1cbdd3c5163d065355c7249e06e2407ce26/KakaoTalk_20260318_222431455.jpg">
+    <img src="https://raw.githubusercontent.com/ekdud0423/daydream/6b87f1cbdd3c5163d065355c7249e06e2407ce26/KakaoTalk_20260318_222431455.jpg">
   </div>
 
-  <!-- 연혁 -->
-  <div class="box history">
-    연혁
-  </div>
+  <div class="box logo-box">로고</div>
+  <div class="box history">연혁</div>
+  
+  <div class="box wide-btn" onclick="location.href='https://ekdud0423.github.io/D-dim-project/'">디딤프로젝트 보러가기</div>
+  <div class="box wide-btn" onclick="location.href='https://linktr.ee/daydream101'">워크숍 신청하기</div>
 
-  <!-- 버튼 -->
-  <div class="box wide-btn" onclick="location.href='https://ekdud0423.github.io/D-dim-project/'">
-    디딤프로젝트 보러가기
-  </div>
-
-  <div class="box wide-btn" onclick="location.href='https://linktr.ee/daydream101'">
-    워크숍 신청하기
-  </div>
-
-  <!-- 공연 -->
   <div class="section-title">공연별 사진</div>
-
   <div class="grid">
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
+    <div></div><div></div><div></div>
+    <div></div><div></div><div></div>
   </div>
 
   <footer>
@@ -207,7 +175,6 @@ footer {
     이메일 : ekdud0423@gmail.com <br>
     ©2026 극단 백일몽
   </footer>
-
 </div>
 
 </body>
