@@ -33,6 +33,22 @@ body {
   cursor: pointer;
 }
 
+/* 극단 소개 이미지 영역 */
+.intro-section {
+  width: 100%;
+  max-width: 500px; /* 모바일 기준 */
+  margin: 20px auto 0;
+  padding: 0 5%;
+  box-sizing: border-box;
+}
+
+.intro-section img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
 /* 컨테이너 */
 .container {
   width: 90%;
@@ -43,7 +59,7 @@ body {
 
 /* PC 버전일 때 */
 @media (min-width: 768px) {
-  .container {
+  .container, .intro-section {
     max-width: 1200px;
   }
   .grid {
@@ -81,9 +97,6 @@ body {
   height: 100%;
   object-fit: cover;
 }
-
-/* 로고 영역 */
-.logo-box { height: 120px; color: white; }
 
 /* 연혁 */
 .history { height: 220px; }
@@ -128,8 +141,12 @@ footer {
   <div class="menu">메뉴</div>
 </div>
 
-  <div class="top-banner" onclick="location.href='https://www.instagram.com/day_101_dream?igsh=MWF3bmcxYWp5cGg0ag%3D%3D&utm_source=qr'">
+<div class="top-banner" onclick="location.href='https://www.instagram.com/day_101_dream?igsh=MWF3bmcxYWp5cGg0ag%3D%3D&utm_source=qr'">
   📌 극단 백일몽 인스타그램 바로가기
+</div>
+
+<div class="intro-section">
+  <img src="극단소개.png" alt="극단 백일몽 소개">
 </div>
 
 <div class="container">
@@ -146,10 +163,9 @@ footer {
     <div><img src="https://raw.githubusercontent.com/ekdud0423/daydream/b8c969938546a9e224b15368727313d3a0effe63/never4.jpg" alt="never4"></div>
   </div>
 
-  <div class="box logo-box">로고</div>
   <div class="box history">연혁</div>
   
-  <a href="https://ekdud0423.github.io/D-dim-project/" class="wide-btn">디딤프로젝트 보러가기</a>
+  <a href="https://ekdud0423.github.io/ddimgo/" class="wide-btn">디딤프로젝트 보러가기</a>
   <a href="https://linktr.ee/daydream101" class="wide-btn">워크숍 신청하기</a>
 
   <footer>
