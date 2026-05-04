@@ -99,7 +99,91 @@ body {
 }
 
 /* 연혁 */
-.history { height: 220px; }
+<style>
+.history-section {
+  background: #cfcfcf;
+  padding: 60px 40px;
+  text-align: left;
+}
+
+.history-title {
+  text-align: center;
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 50px;
+  color: #111;
+}
+
+.timeline {
+  position: relative;
+  max-width: 760px;
+  margin: 0 auto;
+  padding-left: 45px;
+}
+
+/* 세로줄 */
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 12px;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background: #5a4a56;
+}
+
+/* 항목 */
+.timeline-item {
+  position: relative;
+  display: flex;
+  gap: 35px;
+  margin-bottom: 34px;
+  align-items: flex-start;
+}
+
+/* 동그라미 */
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -39px;
+  top: 8px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #5a4a56;
+}
+
+.timeline-date {
+  min-width: 120px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #5a4a56;
+}
+
+.timeline-content {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #111;
+  word-break: keep-all;
+}
+
+/* 모바일 */
+@media (max-width: 768px) {
+  .history-section {
+    padding: 40px 20px;
+  }
+
+  .timeline-item {
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 28px;
+  }
+
+  .timeline-date {
+    min-width: auto;
+  }
+}
+</style>
 
 /* 버튼 */
 .wide-btn {
@@ -234,8 +318,49 @@ footer {
     <div><img src="https://raw.githubusercontent.com/ekdud0423/daydream/b8c969938546a9e224b15368727313d3a0effe63/never4.jpg" alt="never4"></div>
   </div>
 
-  <div class="box history">연혁</div>
-  
+  <!-- 연혁 섹션 -->
+<section class="history-section">
+  <h2 class="history-title">연혁</h2>
+
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-date">2024.01</div>
+      <div class="timeline-content">극단 백일몽 창립</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">2024.02</div>
+      <div class="timeline-content">&lt;웜홀&gt; - 디딤프로젝트24 / 공간서로</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">2025.02</div>
+      <div class="timeline-content">&lt;네버랜드&gt; - 디딤프로젝트25 / 공간서로</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">2026.02</div>
+      <div class="timeline-content">사업자등록</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">2026.03</div>
+      <div class="timeline-content">디딤프로젝트26 낭독회 - 예술가의 집</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">2026.06</div>
+      <div class="timeline-content">&lt;손톱 끝으로&gt; - 강북 사회공헌 프로젝트 / 예술당솔샘</div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">2026.07</div>
+      <div class="timeline-content">&lt;손톱 끝으로&gt; - 디딤프로젝트26 / 신촌문화발전소</div>
+    </div>
+
+  </div>
+</section>
   <a href="https://ekdud0423.github.io/ddimgo/" class="wide-btn">디딤프로젝트 후원하기</a>
   <a href="https://linktr.ee/daydream101" class="wide-btn">디딤프로젝트 보러가기</a>
 
