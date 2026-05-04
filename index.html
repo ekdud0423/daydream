@@ -29,8 +29,15 @@ body {
   font-size: 1.2rem;
 }
 
-.menu {
+.menu-link {
   font-size: 14px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.menu-link:hover {
+  color: #5B4A54;
 }
 
 /* 3. 상단 배너 */
@@ -53,9 +60,8 @@ body {
   box-sizing: border-box;
 }
 
-/* ★ 로고 크기 조절 부분 ★ */
 .intro-logo {
-  width: 100px; /* 원하는 크기로 숫자를 조절하세요 (예: 80px, 120px) */
+  width: 100px;
   height: auto;
   margin-bottom: 30px;
 }
@@ -103,7 +109,7 @@ body {
   font-size: 1.2rem;
 }
 
-/* 6. 공연 사진 그리드 */
+/* 6. 공연 사진 */
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -125,7 +131,7 @@ body {
   object-fit: cover;
 }
 
-/* 7. 연혁 섹션 */
+/* 7. 연혁 */
 .history-section {
   background: #cfcfcf;
   padding: 80px 20px;
@@ -190,7 +196,7 @@ body {
   word-break: keep-all;
 }
 
-/* 8. 버튼 및 푸터 */
+/* 8. 버튼 */
 .wide-btn {
   height: 60px;
   background: #5B4A54;
@@ -219,22 +225,24 @@ footer {
   line-height: 1.6;
 }
 
-/* 9. 반응형 디자인 (PC) */
+/* PC */
 @media (min-width: 768px) {
   .container {
     max-width: 1000px;
   }
+
   .grid {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
-/* 10. 반응형 디자인 (모바일) */
+/* 모바일 */
 @media (max-width: 768px) {
   .timeline-item {
     flex-direction: column;
     gap: 8px;
   }
+
   .timeline-date {
     font-size: 16px;
   }
@@ -247,7 +255,7 @@ footer {
 <!-- 네비게이션 -->
 <div class="nav">
   <div class="logo">극단 백일몽</div>
-  <div class="menu">메뉴</div>
+  <a href="https://linktr.ee/daydream101" class="menu-link">디딤프로젝트 보러가기</a>
 </div>
 
 <!-- 상단 배너 -->
@@ -255,24 +263,28 @@ footer {
   📌 극단 백일몽 인스타그램 바로가기
 </div>
 
-<!-- 인트로 섹션 -->
+<!-- 인트로 -->
 <div class="intro-section">
-  <!-- 로고 이미지 (클래스 적용 확인) -->
-  <img class="intro-logo" src="https://github.com/ekdud0423/daydream/blob/main/%EA%B7%B9%EB%8B%A8%EB%A1%9C%EA%B3%A0.png?raw=true" alt="극단 백일몽 로고">
-  
+  <img class="intro-logo"
+       src="https://raw.githubusercontent.com/ekdud0423/daydream/main/%EA%B7%B9%EB%8B%A8%EB%A1%9C%EA%B3%A0.png"
+       alt="극단 백일몽 로고">
+
   <div class="intro-text-container">
     <p class="intro-title">
       2024년에 창단된 <strong>극단 백일몽</strong>은<br>
       낮에 꿈을 꾸는 사람들의 집단입니다.
     </p>
+
     <p class="intro-desc">
       우리는 현실을 외면하지 않습니다.<br>
       오히려 더 또렷한 시선으로 현실을 바라보기 위해 꿈을 꿉니다.
     </p>
+
     <p class="intro-desc">
       꿈과 현실이 충돌하면서도 공존하는 그 경계에서<br>
       인간이 끝까지 붙잡아야 할 가치와 질문을 무대 위에 올립니다.
     </p>
+
     <p class="intro-highlight">
       백일몽은 지금, 그 질문을 이어가기 위한<br>
       다음 이야기를 준비하고 있습니다.
@@ -280,9 +292,10 @@ footer {
   </div>
 </div>
 
-<!-- 공연 사진 그리드 -->
+<!-- 공연 사진 -->
 <div class="container">
   <div class="section-title">공연별 사진</div>
+
   <div class="grid">
     <div><img src="https://raw.githubusercontent.com/ekdud0423/daydream/b8c969938546a9e224b15368727313d3a0effe63/warm1.jpg"></div>
     <div><img src="https://raw.githubusercontent.com/ekdud0423/daydream/b8c969938546a9e224b15368727313d3a0effe63/warm2.png"></div>
@@ -295,45 +308,23 @@ footer {
   </div>
 </div>
 
-<!-- 연혁 섹션 -->
+<!-- 연혁 -->
 <section class="history-section">
   <h2 class="history-title">연혁</h2>
   <div class="timeline">
-    <div class="timeline-item">
-      <div class="timeline-date">2024.01</div>
-      <div class="timeline-content">극단 백일몽 창립</div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-date">2024.02</div>
-      <div class="timeline-content">&lt;웜홀&gt; - 디딤프로젝트24 / 공간서로</div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-date">2025.02</div>
-      <div class="timeline-content">&lt;네버랜드&gt; - 디딤프로젝트25 / 공간서로</div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-date">2026.02</div>
-      <div class="timeline-content">사업자등록</div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-date">2026.03</div>
-      <div class="timeline-content">디딤프로젝트26 낭독회 - 예술가의 집</div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-date">2026.06</div>
-      <div class="timeline-content">&lt;손톱 끝으로&gt; - 강북 사회공헌 프로젝트 / 예술당솔샘</div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-date">2026.07</div>
-      <div class="timeline-content">&lt;손톱 끝으로&gt; - 디딤프로젝트26 / 신촌문화발전소</div>
-    </div>
+    <div class="timeline-item"><div class="timeline-date">2024.01</div><div class="timeline-content">극단 백일몽 창립</div></div>
+    <div class="timeline-item"><div class="timeline-date">2024.02</div><div class="timeline-content">&lt;웜홀&gt; - 디딤프로젝트24 / 공간서로</div></div>
+    <div class="timeline-item"><div class="timeline-date">2025.02</div><div class="timeline-content">&lt;네버랜드&gt; - 디딤프로젝트25 / 공간서로</div></div>
+    <div class="timeline-item"><div class="timeline-date">2026.02</div><div class="timeline-content">사업자등록</div></div>
+    <div class="timeline-item"><div class="timeline-date">2026.03</div><div class="timeline-content">디딤프로젝트26 낭독회 - 예술가의 집</div></div>
+    <div class="timeline-item"><div class="timeline-date">2026.06</div><div class="timeline-content">&lt;손톱 끝으로&gt; - 강북 사회공헌 프로젝트 / 예술당솔샘</div></div>
+    <div class="timeline-item"><div class="timeline-date">2026.07</div><div class="timeline-content">&lt;손톱 끝으로&gt; - 디딤프로젝트26 / 신촌문화발전소</div></div>
   </div>
 </section>
 
-<!-- 푸터 및 하단 버튼 -->
+<!-- 하단 -->
 <div class="container">
   <a href="https://ekdud0423.github.io/ddimgo/" class="wide-btn">디딤프로젝트 후원하기</a>
-  <a href="https://linktr.ee/daydream101" class="wide-btn">디딤프로젝트 보러가기</a>
 
   <footer>
     단체명 : 극단 백일몽 <br>
