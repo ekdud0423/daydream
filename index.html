@@ -4,17 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>극단 백일몽</title>
-
 <style>
-/* 1. 기본 설정 */
 body {
   margin: 0;
   font-family: 'Pretendard', sans-serif;
   background: #f5f5f5;
   color: #333;
+  overflow-x: hidden;
 }
 
-/* 2. 네비게이션 */
+/* 네비게이션 */
 .nav {
   display: flex;
   justify-content: space-between;
@@ -22,6 +21,8 @@ body {
   padding: 15px 5%;
   background: white;
   border-bottom: 1px solid #ddd;
+  position: relative;
+  z-index: 100;
 }
 
 .logo {
@@ -29,18 +30,247 @@ body {
   font-size: 1.2rem;
 }
 
-.menu-link {
-  font-size: 14px;
-  text-decoration: none;
-  color: #333;
+/* 햄버거 버튼 */
+.menu-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: flex-end;
+}
+
+.menu-btn span {
+  display: block;
+  height: 2px;
+  background: #333;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.menu-btn span:nth-child(1) { width: 22px; }
+.menu-btn span:nth-child(2) { width: 16px; }
+.menu-btn span:nth-child(3) { width: 22px; }
+
+.menu-btn.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+  width: 22px;
+}
+.menu-btn.open span:nth-child(2) {
+  opacity: 0;
+  width: 0;
+}
+.menu-btn.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+  width: 22px;
+}
+
+/* 오버레이 */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 200;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* 사이드바 */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100%;
+  background: #1a1228;
+  z-index: 300;
+  transform: translateX(100%);
+  transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar.open {
+  transform: translateX(0);
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.sidebar-logo {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #E0D7FF;
+  letter-spacing: 0.04em;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(255,255,255,0.5);
+  font-size: 22px;
+  line-height: 1;
+  padding: 4px;
+  transition: color 0.2s;
+}
+
+.close-btn:hover {
+  color: white;
+}
+
+/* 메뉴 아이템 */
+.sidebar-nav {
+  padding: 10px 0;
+  flex: 1;
+}
+
+.menu-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(255,255,255,0.75);
+  font-size: 0.95rem;
+  font-family: inherit;
   font-weight: 500;
+  padding: 14px 24px;
+  transition: background 0.2s, color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
 }
 
-.menu-link:hover {
-  color: #5B4A54;
+.menu-item:hover {
+  background: rgba(255,255,255,0.06);
+  color: white;
 }
 
-/* 3. 상단 배너 */
+.menu-item .arrow {
+  font-size: 0.75rem;
+  opacity: 0.4;
+  transition: transform 0.25s, opacity 0.2s;
+}
+
+.menu-item.expanded .arrow {
+  transform: rotate(90deg);
+  opacity: 0.8;
+}
+
+/* 서브메뉴 */
+.submenu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+  background: rgba(0,0,0,0.25);
+}
+
+.submenu.open {
+  max-height: 800px;
+}
+
+.submenu-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 12px 24px 12px 32px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.submenu-item:last-child {
+  border-bottom: none;
+}
+
+.submenu-date {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #9580C8;
+  min-width: 60px;
+  padding-top: 2px;
+  letter-spacing: 0.02em;
+}
+
+.submenu-text {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.5;
+}
+
+/* 구분선 */
+.menu-divider {
+  height: 1px;
+  background: rgba(255,255,255,0.07);
+  margin: 6px 24px;
+}
+
+/* 외부 링크 메뉴 */
+.menu-item-ext {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(255,255,255,0.75);
+  font-size: 0.95rem;
+  font-family: inherit;
+  font-weight: 500;
+  padding: 14px 24px;
+  transition: background 0.2s, color 0.2s;
+  text-decoration: none;
+}
+
+.menu-item-ext:hover {
+  background: rgba(255,255,255,0.06);
+  color: white;
+}
+
+.menu-item-ext .ext-icon {
+  font-size: 0.7rem;
+  opacity: 0.45;
+}
+
+/* 사이드바 하단 */
+.sidebar-footer {
+  padding: 20px 24px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.3);
+  line-height: 1.7;
+}
+
+/* 손톱 서브메뉴 배지 */
+.badge {
+  font-size: 0.65rem;
+  background: #5B4A8A;
+  color: #D0BEFF;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+/* ── 기존 스타일 ── */
 .top-banner {
   background: #C4B4C7;
   text-align: center;
@@ -50,7 +280,6 @@ body {
   font-weight: 500;
 }
 
-/* 4. 인트로 섹션 */
 .intro-section {
   width: 100%;
   background-color: #4B3D8A;
@@ -94,7 +323,6 @@ body {
   color: #E0D7FF;
 }
 
-/* 5. 컨텐츠 레이아웃 */
 .container {
   width: 90%;
   max-width: 500px;
@@ -109,7 +337,6 @@ body {
   font-size: 1.2rem;
 }
 
-/* 6. 공연 사진 */
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -131,7 +358,6 @@ body {
   object-fit: cover;
 }
 
-/* 7. 연혁 */
 .history-section {
   background: #cfcfcf;
   padding: 40px 20px;
@@ -196,7 +422,6 @@ body {
   word-break: keep-all;
 }
 
-/* 8. 버튼 */
 .wide-btn {
   height: 60px;
   background: #5B4A54;
@@ -225,37 +450,107 @@ footer {
   line-height: 1.6;
 }
 
-/* PC */
 @media (min-width: 768px) {
-  .container {
-    max-width: 1000px;
-  }
-
-  .grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
+  .container { max-width: 1000px; }
+  .grid { grid-template-columns: repeat(4, 1fr); }
 }
 
-/* 모바일 */
 @media (max-width: 768px) {
-  .timeline-item {
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .timeline-date {
-    font-size: 16px;
-  }
+  .timeline-item { flex-direction: column; gap: 8px; }
+  .timeline-date { font-size: 16px; }
+  .sidebar { width: 85vw; max-width: 300px; }
 }
 </style>
 </head>
-
 <body>
+
+<!-- 오버레이 -->
+<div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+
+<!-- 사이드바 -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <span class="sidebar-logo">극단 백일몽</span>
+    <button class="close-btn" onclick="closeSidebar()" aria-label="닫기">✕</button>
+  </div>
+
+  <nav class="sidebar-nav">
+
+    <!-- 디딤프로젝트 연혁 (아코디언) -->
+    <button class="menu-item" id="ddim-toggle" onclick="toggleSubmenu('ddim')" aria-expanded="false">
+      <span>디딤프로젝트 연혁</span>
+      <span class="arrow">▶</span>
+    </button>
+    <div class="submenu" id="ddim-submenu">
+      <div class="submenu-item">
+        <div class="submenu-date">2024.02</div>
+        <div class="submenu-text">〈웜홀〉 — 디딤프로젝트24 / 공간서로</div>
+      </div>
+      <div class="submenu-item">
+        <div class="submenu-date">2025.02</div>
+        <div class="submenu-text">〈네버랜드〉 — 디딤프로젝트25 / 공간서로</div>
+      </div>
+      <div class="submenu-item">
+        <div class="submenu-date">2026.03</div>
+        <div class="submenu-text">디딤프로젝트26 낭독회 — 예술가의 집</div>
+      </div>
+      <div class="submenu-item">
+        <div class="submenu-date">2026.07</div>
+        <div class="submenu-text">〈손톱 끝으로〉 — 디딤프로젝트26 / 신촌문화발전소</div>
+      </div>
+    </div>
+
+    <div class="menu-divider"></div>
+
+    <!-- 손톱 끝으로 (아코디언) -->
+    <button class="menu-item" id="nails-toggle" onclick="toggleSubmenu('nails')" aria-expanded="false">
+      <span>손톱 끝으로 &nbsp;<span class="badge">NEW</span></span>
+      <span class="arrow">▶</span>
+    </button>
+    <div class="submenu" id="nails-submenu">
+      <div class="submenu-item">
+        <div class="submenu-date">2026.06</div>
+        <div class="submenu-text">강북 사회공헌 프로젝트 / 예술당솔샘</div>
+      </div>
+      <div class="submenu-item">
+        <div class="submenu-date">2026.07</div>
+        <div class="submenu-text">디딤프로젝트26 / 신촌문화발전소</div>
+      </div>
+    </div>
+
+    <div class="menu-divider"></div>
+
+    <!-- 외부 링크들 -->
+    <a href="https://ekdud0423.github.io/ddimright/" class="menu-item-ext" target="_blank">
+      디딤프로젝트 보러가기
+      <span class="ext-icon">↗</span>
+    </a>
+
+    <a href="https://ekdud0423.github.io/-/" class="menu-item-ext" target="_blank">
+      디딤프로젝트 후원하기
+      <span class="ext-icon">↗</span>
+    </a>
+
+    <a href="https://www.instagram.com/day_101_dream" class="menu-item-ext" target="_blank">
+      인스타그램
+      <span class="ext-icon">↗</span>
+    </a>
+  </nav>
+
+  <div class="sidebar-footer">
+    ekdud0423@gmail.com<br>
+    ©2026 극단 백일몽
+  </div>
+</div>
 
 <!-- 네비게이션 -->
 <div class="nav">
   <div class="logo">극단 백일몽</div>
-  <a href="https://ekdud0423.github.io/ddimright/" class="menu-link">디딤프로젝트 보러가기</a>
+  <button class="menu-btn" id="menu-btn" onclick="openSidebar()" aria-label="메뉴 열기">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </div>
 
 <!-- 상단 배너 -->
@@ -268,23 +563,19 @@ footer {
   <img class="intro-logo"
        src="https://raw.githubusercontent.com/ekdud0423/daydream/main/%EA%B7%B9%EB%8B%A8%EB%A1%9C%EA%B3%A0.png"
        alt="극단 백일몽 로고">
-
   <div class="intro-text-container">
     <p class="intro-title">
       2024년에 창단된 <strong>극단 백일몽</strong>은<br>
       낮에 꿈을 꾸는 사람들의 집단입니다.
     </p>
-
     <p class="intro-desc">
       우리는 현실을 외면하지 않습니다.<br>
       오히려 더 또렷한 시선으로 현실을 바라보기 위해 꿈을 꿉니다.
     </p>
-
     <p class="intro-desc">
       꿈과 현실이 충돌하면서도 공존하는 그 경계에서<br>
       인간이 끝까지 붙잡아야 할 가치와 질문을 무대 위에 올립니다.
     </p>
-
     <p class="intro-highlight">
       백일몽은 지금, 그 질문을 이어가기 위한<br>
       다음 이야기를 준비하고 있습니다.
@@ -295,7 +586,6 @@ footer {
 <!-- 공연 사진 -->
 <div class="container">
   <div class="section-title">공연별 사진</div>
-
   <div class="grid">
     <div><img src="https://raw.githubusercontent.com/ekdud0423/daydream/b8c969938546a9e224b15368727313d3a0effe63/warm1.jpg"></div>
     <div><img src="https://raw.githubusercontent.com/ekdud0423/daydream/b8c969938546a9e224b15368727313d3a0effe63/warm2.png"></div>
@@ -325,7 +615,6 @@ footer {
 <!-- 하단 -->
 <div class="container">
   <a href="https://ekdud0423.github.io/-/" class="wide-btn">디딤프로젝트 후원하기</a>
-
   <footer>
     단체명 : 극단 백일몽 <br>
     이메일 : ekdud0423@gmail.com <br>
@@ -333,5 +622,34 @@ footer {
   </footer>
 </div>
 
+<script>
+function openSidebar() {
+  document.getElementById('sidebar').classList.add('open');
+  document.getElementById('overlay').classList.add('open');
+  document.getElementById('menu-btn').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeSidebar() {
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('overlay').classList.remove('open');
+  document.getElementById('menu-btn').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function toggleSubmenu(id) {
+  const submenu = document.getElementById(id + '-submenu');
+  const toggle = document.getElementById(id + '-toggle');
+  const isOpen = submenu.classList.contains('open');
+
+  submenu.classList.toggle('open', !isOpen);
+  toggle.classList.toggle('expanded', !isOpen);
+  toggle.setAttribute('aria-expanded', String(!isOpen));
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeSidebar();
+});
+</script>
 </body>
 </html>
