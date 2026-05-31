@@ -450,6 +450,282 @@ footer {
   line-height: 1.6;
 }
 
+/* ── 모달 ── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  z-index: 500;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow-y: auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.modal-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal-box {
+  background: #f0ebe3;
+  width: 100%;
+  max-width: 480px;
+  border-radius: 12px;
+  overflow: hidden;
+  transform: translateY(30px);
+  transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+  position: relative;
+  margin: auto;
+}
+
+.modal-overlay.open .modal-box {
+  transform: translateY(0);
+}
+
+.modal-close {
+  position: sticky;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: flex-end;
+  padding: 12px 16px 0;
+  background: transparent;
+}
+
+.modal-close button {
+  background: rgba(0,0,0,0.15);
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.modal-close button:hover {
+  background: rgba(0,0,0,0.28);
+}
+
+/* 모달 상단 헤더 */
+.modal-hero {
+  position: relative;
+  background: #2a1f1a;
+  color: white;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 32px 28px 28px;
+  overflow: hidden;
+}
+
+.modal-hero-bg {
+  position: absolute;
+  inset: 0;
+  background: url('https://raw.githubusercontent.com/ekdud0423/daydream/b8c969938546a9e224b15368727313d3a0effe63/never1.jpg') center/cover;
+  opacity: 0.25;
+}
+
+.modal-hero-meta {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 18px;
+}
+
+.modal-hero-meta p {
+  margin: 0 0 4px;
+  font-size: 0.78rem;
+  opacity: 0.6;
+  letter-spacing: 0.05em;
+}
+
+.modal-hero-meta span {
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+.modal-title-block {
+  position: relative;
+  z-index: 1;
+  border: 2px solid rgba(255,255,255,0.7);
+  display: inline-block;
+  padding: 14px 20px;
+  line-height: 1.4;
+  margin-bottom: 20px;
+}
+
+.modal-title-block .ko-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: white;
+}
+
+.modal-badge-row {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.modal-badge {
+  font-size: 0.72rem;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: rgba(255,255,255,0.85);
+  padding: 4px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.04em;
+}
+
+/* 모달 본문 */
+.modal-body {
+  padding: 32px 28px;
+}
+
+.modal-section-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-align: center;
+  color: #1a1a1a;
+  margin: 0 0 18px;
+  letter-spacing: 0.04em;
+}
+
+.modal-quote {
+  text-align: center;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.7;
+  color: #1a1a1a;
+  margin: 0 0 22px;
+}
+
+.modal-desc {
+  font-size: 0.88rem;
+  line-height: 1.85;
+  color: #444;
+  margin: 0 0 14px;
+  word-break: keep-all;
+}
+
+.modal-divider {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 28px 0;
+}
+
+/* 캐스트 */
+.cast-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  margin-bottom: 8px;
+}
+
+.cast-card {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.cast-photo {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  background: #ccc;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.cast-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.cast-info {
+  flex: 1;
+}
+
+.cast-role {
+  font-size: 0.72rem;
+  color: #888;
+  letter-spacing: 0.06em;
+  margin: 0 0 2px;
+}
+
+.cast-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 6px;
+}
+
+.cast-quote {
+  font-size: 0.82rem;
+  color: #555;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+/* 크리에이티브 팀 */
+.team-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.team-item {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.team-photo {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #ccc;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.team-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.team-info .team-role {
+  font-size: 0.72rem;
+  color: #888;
+  letter-spacing: 0.06em;
+  margin: 0 0 2px;
+}
+
+.team-info .team-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0;
+}
+
 @media (min-width: 768px) {
   .container { max-width: 1000px; }
   .grid { grid-template-columns: repeat(4, 1fr); }
@@ -476,47 +752,11 @@ footer {
 
   <nav class="sidebar-nav">
 
-    <!-- 디딤프로젝트 연혁 (아코디언) -->
-    <button class="menu-item" id="ddim-toggle" onclick="toggleSubmenu('ddim')" aria-expanded="false">
-      <span>디딤프로젝트 연혁</span>
-      <span class="arrow">▶</span>
-    </button>
-    <div class="submenu" id="ddim-submenu">
-      <div class="submenu-item">
-        <div class="submenu-date">2024.02</div>
-        <div class="submenu-text">〈웜홀〉 — 디딤프로젝트24 / 공간서로</div>
-      </div>
-      <div class="submenu-item">
-        <div class="submenu-date">2025.02</div>
-        <div class="submenu-text">〈네버랜드〉 — 디딤프로젝트25 / 공간서로</div>
-      </div>
-      <div class="submenu-item">
-        <div class="submenu-date">2026.03</div>
-        <div class="submenu-text">디딤프로젝트26 낭독회 — 예술가의 집</div>
-      </div>
-      <div class="submenu-item">
-        <div class="submenu-date">2026.07</div>
-        <div class="submenu-text">〈손톱 끝으로〉 — 디딤프로젝트26 / 신촌문화발전소</div>
-      </div>
-    </div>
-
-    <div class="menu-divider"></div>
-
-    <!-- 손톱 끝으로 (아코디언) -->
-    <button class="menu-item" id="nails-toggle" onclick="toggleSubmenu('nails')" aria-expanded="false">
+    <!-- 외부 링크들 -->
+    <button class="menu-item" onclick="openModal()">
       <span>손톱 끝으로 &nbsp;<span class="badge">NEW</span></span>
-      <span class="arrow">▶</span>
+      <span class="arrow" style="opacity:0.4; font-size:0.7rem;">▶</span>
     </button>
-    <div class="submenu" id="nails-submenu">
-      <div class="submenu-item">
-        <div class="submenu-date">2026.06</div>
-        <div class="submenu-text">강북 사회공헌 프로젝트 / 예술당솔샘</div>
-      </div>
-      <div class="submenu-item">
-        <div class="submenu-date">2026.07</div>
-        <div class="submenu-text">디딤프로젝트26 / 신촌문화발전소</div>
-      </div>
-    </div>
 
     <div class="menu-divider"></div>
 
@@ -622,6 +862,117 @@ footer {
   </footer>
 </div>
 
+<!-- 손톱 끝으로 모달 -->
+<div class="modal-overlay" id="nails-modal" onclick="handleModalClick(event)">
+  <div class="modal-box">
+    <div class="modal-close">
+      <button onclick="closeModal()" aria-label="닫기">✕</button>
+    </div>
+
+    <!-- 헤더 -->
+    <div class="modal-hero">
+      <div class="modal-hero-bg" style="background-image: url('https://raw.githubusercontent.com/ekdud0423/daydream/main/포스터최종.png'); opacity: 0.55;"></div>
+      <div class="modal-hero-meta">
+        <p>작/연출 &nbsp;서유진 &nbsp;&nbsp; 출연 &nbsp;이다영 · 정지호 · 정리별 &nbsp;&nbsp; 부분작곡 &nbsp;강원용</p>
+      </div>
+      <div class="modal-title-block">
+        <div class="ko-title">손 톱<br>끝 으 로</div>
+      </div>
+      <div class="modal-badge-row">
+        <span class="modal-badge">2026.06 예술당솔샘</span>
+        <span class="modal-badge">2026.07 신촌문화발전소</span>
+      </div>
+    </div>
+
+    <!-- 본문 -->
+    <div class="modal-body">
+
+      <!-- 작품소개 -->
+      <div class="modal-section-title">작품소개</div>
+      <div class="modal-quote">"그건 살아남는 방법이죠.<br>살아가는 방법이 아니죠."</div>
+      <p class="modal-desc">
+        〈손톱 끝으로〉는 '글'의 가치가 무너진 미래 사회에서도 끝내 다음 세대에게 손을 내미려는 사람들의 이야기다. 작품 속 2046년의 세상은 영상과 이미지 중심의 문화가 극단적으로 발달해 '글'을 읽고 쓰는 일조차 선택적 영역이 된 시대다.
+      </p>
+      <p class="modal-desc">
+        사람들은 점점 긴 문장을 읽지 않고, 기억력이 얕어져, 생각하는 대신 빠르게 소비하는 삶에 익숙해져 간다. 그 혼란 속에서 사회의 대한 분노를 표출하는 폭도들이 등장하며 세상은 더욱 빠르게 붕괴되어 간다.
+      </p>
+      <p class="modal-desc">
+        작품은 이러한 시대 속 패배가 된 초등학교 도서관을 배경으로, 살아남는 것과 살아가는 것 사이에서 갈등하는 인간의 모습을 드러낸다. 폭력이 일상이 된 세상에서도 누군가는 글자를 배우고 싶어 하고, 누군가는 기록을 보존하려 하고, 누군가는 타인에 대한 이해를 포기하지 못한다. 〈손톱 끝으로〉는 무너진 시대 속에서도 마지막까지 남아 있는 책임감과 온기에 대한 가치를 조명하는 작품이다.
+      </p>
+
+      <hr class="modal-divider">
+
+      <!-- 시놉시스 -->
+      <div class="modal-section-title">시놉시스</div>
+      <p class="modal-desc">
+        2046년. 의무교육이라는 개념이 사라지고, 읽고 쓰는 능력조차 선택이 되며 '글'의 가치가 급격히 사라지는 시대. 그 와중에 사회에 대한 분노를 표출하는 폭도들의 폭동으로 인해 몇 개 남아 있었던 교육기관들마저 문을 닫는다.
+      </p>
+      <p class="modal-desc">
+        초등학교 교사였던 여자는 죽은 아버지의 흔적을 찾기 위해 폐허가 된 학교 도서관을 다시 찾아온다. 그곳에는 학교가 문을 닫은 이후에도 홀로 도서관을 지키며 살아가는 늙은 '사서'가 있다.
+      </p>
+      <p class="modal-desc">
+        그 사서에게서 여자는 삶을 살아가는 여자는 살아있는 한 반드시 글자를 읽지 말아야 한다고 말하는 사서와 함께 시간을 보낸다. 이후 사서는 죽은 자신을 애도하기 위해 혼자였던 사서이고, 여자는 홀로 도서관에 남겨진다.
+      </p>
+      <p class="modal-desc">
+        그러던 중, 글을 배우고 싶다는 한 아이가 도서관에 나타난다. 읽고 쓰는 것을 배우지 못한 채 자라온 아이는 꽃의 이름을 기억하고 싶고, 의미의 자신에게 책을 쓰고 싶다고 말한다. 여자는 이 아이를 통해, 무너진 시대 속에서도 누군가는 다음 세대에게 손 내밀고 문가를 전달해야 한다는 책임감과 마주하게 된다.
+      </p>
+
+      <hr class="modal-divider">
+
+      <!-- CAST -->
+      <div class="modal-section-title">CAST</div>
+      <div class="cast-grid">
+        <div class="cast-card">
+          <div class="cast-photo"><img src="https://raw.githubusercontent.com/ekdud0423/daydream/main/장지호.png" alt="장지호"></div>
+          <div class="cast-info">
+            <p class="cast-role">사서</p>
+            <p class="cast-name">장지호</p>
+            <p class="cast-quote">"그건 살아남는 방법이죠.<br>살아가는 방법이 아니죠."</p>
+          </div>
+        </div>
+        <div class="cast-card">
+          <div class="cast-photo"><img src="https://raw.githubusercontent.com/ekdud0423/daydream/main/정라헬.png" alt="정라헬"></div>
+          <div class="cast-info">
+            <p class="cast-role">아이</p>
+            <p class="cast-name">정라헬</p>
+            <p class="cast-quote">"내가 죽는 걸 상상할 수 있어요?"</p>
+          </div>
+        </div>
+        <div class="cast-card">
+          <div class="cast-photo"><img src="https://raw.githubusercontent.com/ekdud0423/daydream/main/이다영.png" alt="이다영"></div>
+          <div class="cast-info">
+            <p class="cast-role">여자</p>
+            <p class="cast-name">이다영</p>
+            <p class="cast-quote">"이런 세상을 넘겨주고<br>싶었던 건 아닌데."</p>
+          </div>
+        </div>
+      </div>
+
+      <hr class="modal-divider">
+
+      <!-- Creative Team -->
+      <div class="modal-section-title">Creative Team</div>
+      <div class="team-list">
+        <div class="team-item">
+          <div class="team-photo"><img src="https://raw.githubusercontent.com/ekdud0423/daydream/main/서유진.png" alt="서유진" style="width:100%;height:100%;object-fit:cover;object-position:top;"></div>
+          <div class="team-info">
+            <p class="team-role">연출</p>
+            <p class="team-name">서유진</p>
+          </div>
+        </div>
+        <div class="team-item">
+          <div class="team-photo" style="background:#d0ccc8;"></div>
+          <div class="team-info">
+            <p class="team-role">부분작곡</p>
+            <p class="team-name">강원용</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 <script>
 function openSidebar() {
   document.getElementById('sidebar').classList.add('open');
@@ -641,14 +992,31 @@ function toggleSubmenu(id) {
   const submenu = document.getElementById(id + '-submenu');
   const toggle = document.getElementById(id + '-toggle');
   const isOpen = submenu.classList.contains('open');
-
   submenu.classList.toggle('open', !isOpen);
   toggle.classList.toggle('expanded', !isOpen);
   toggle.setAttribute('aria-expanded', String(!isOpen));
 }
 
+function openModal() {
+  closeSidebar();
+  document.getElementById('nails-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('nails-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function handleModalClick(e) {
+  if (e.target === document.getElementById('nails-modal')) closeModal();
+}
+
 document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') closeSidebar();
+  if (e.key === 'Escape') {
+    closeModal();
+    closeSidebar();
+  }
 });
 </script>
 </body>
